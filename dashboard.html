@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dashboard</title>
+    <style>
+        body {
+            background-color: cyan;
+            font-family: Arial, sans-serif;
+        }
+        section {
+            height: 15rem;
+            font-size: 2rem;
+            background-color: gold;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 3rem;
+        }
+        .task-form {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        .task-list {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .task-item {
+            background-color: lightgray;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task-item button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .filter-section {
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <section>Welcome To Your Dashboard For Basic Activities</section>
+
+    <!-- Task Form -->
+    <div class="task-form">
+        <h3>Create a New Task</h3>
+        <label for="task-name">Task Name: </label>
+        <input type="text" id="task-name" placeholder="Enter task name">
+        <br><br>
+        <label for="priority">Priority: </label>
+        <select id="priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+        <br><br>
+        <label for="deadline">Deadline: </label>
+        <input type="date" id="deadline">
+        <br><br>
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <h3>Filter Tasks</h3>
+        <label for="priority-filter">Filter by Priority: </label>
+        <select id="priority-filter" onchange="filterTasks()">
+            <option value="">All</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+        <br><br>
+        <label for="search">Search Task: </label>
+        <input type="text" id="search" onkeyup="searchTasks()" placeholder="Search tasks by name">
+    </div>
+
+    <!-- Task List -->
+    <div class="task-list" id="task-list">
+        <h3>Your Tasks</h3>
+        <!-- Tasks will be displayed here -->
+    </div>
+
+    <script>
+        let tasks = [];
+
+        // Function to add a new task
+        function addTask() {
+            const taskName = document.getElementById('task-name').value;
+            const priority = document.getElementById('priority').value;
+            const deadline = document.getElementById('deadline').value;
+
+            if (!taskName || !priority || !deadline) {
+                alert("Please fill all fields");
+                return;
+            }
+
+            const task = { taskName, priority, deadline };
+            tasks.push(task);
+
+            displayTasks();
+            clearInputFields();
+        }
+
+        // Function to clear the input fields
+        function clearInputFields() {
+            document.getElementById('task-name').value = '';
+            document.getElementById('priority').value = 'Low';
+            document.getElementById('deadline').value = '';
+        }
+
+        // Function to delete a task
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            displayTasks();
+        }
+
+        // Function to display tasks
+        function displayTasks() {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '<h3>Your Tasks</h3>';
+            tasks.forEach((task, index) => {
+                const taskItem = document.createElement('div');
+                taskItem.classList.add('task-item');
+                taskItem.innerHTML = `
+                    <div>
+                        <strong>Task:</strong> ${task.taskName} <br>
+                        <strong>Priority:</strong> ${task.priority} <br>
+                        <strong>Deadline:</strong> ${task.deadline}
+                    </div>
+                    <button onclick="deleteTask(${index})">Delete</button>
+                `;
+                taskList.appendChild(taskItem);
+            });
+        }
+
+        // Function to filter tasks based on priority
+        function filterTasks() {
+            const priorityFilter = document.getElementById('priority-filter').value;
+            const filteredTasks = tasks.filter(task => {
+                if (priorityFilter === "") return true;
+                return task.priority === priorityFilter;
+            });
+            displayFilteredTasks(filteredTasks);
+        }
+
+        // Function to display filtered tasks
+        function displayFilteredTasks(filteredTasks) {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '<h3>Your Tasks</h3>';
+            filteredTasks.forEach((task, index) => {
+                const taskItem = document.createElement('div');
+                taskItem.classList.add('task-item');
+                taskItem.innerHTML = `
+                    <div>
+                        <strong>Task:</strong> ${task.taskName} <br>
+                        <strong>Priority:</strong> ${task.priority} <br>
+                        <strong>Deadline:</strong> ${task.deadline}
+                    </div>
+                    <button onclick="deleteTask(${index})">Delete</button>
+                `;
+                taskList.appendChild(taskItem);
+            });
+        }
+
+        // Function to search tasks by name
+        function searchTasks() {
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+            const searchedTasks = tasks.filter(task => task.taskName.toLowerCase().includes(searchQuery));
+            displayFilteredTasks(searchedTasks);
+        }
+    </script>
+
+</body>
+</html>

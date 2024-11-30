@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #li {
+            font-size: 30px;
+            font-family: sans-serif;
+            list-style: none;
+        }
+
+        #h2 {
+            margin-top: -2px;
+        }
+
+        #ul {
+            color: white;
+            display: flex;
+            margin-left: 700px;
+            gap: 3rem;
+        }
+
+        /* Media Query for smaller devices (Max width 500px) */
+        @media all and (max-width: 500px) {
+            #ul {
+                display: block; /* Stacks the menu items vertically */
+                margin-left: 0; /* Aligns the menu to the left */
+                text-align: center;
+            }
+
+            #li {
+                font-size: 20px; /* Smaller font size for mobile */
+                margin-bottom: 10px; /* Adds space between menu items */
+            }
+
+            /* Adjust the section to take full width and smaller text */
+            section {
+                width: 100%;
+                font-size: 20px;
+                padding: 10px;
+                font-weight: 16px;
+            }
+
+            /* Adjust the background image to be more responsive */
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            /* Make the "We are here to serve you" div full width and text size smaller */
+            div {
+                width: 100%;
+                margin-left: 0;
+                margin-top: -100px;
+                font-size: 20px;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: blanchedalmond;
+                color: red;
+            }
+        }
+
+        /* Media Query for medium devices (Max width 768px, typical tablet size) */
+        @media all and (max-width: 768px) {
+            #ul {
+                margin-left: 0; /* Aligns the menu to the left */
+                gap: 2rem;
+            }
+
+            #li {
+                font-size: 25px; /* Smaller font size for tablets */
+            }
+
+            section {
+                width: 100%;
+                font-size: 28px;
+                padding: 15px;
+            }
+
+            div {
+                font-size: 24px;
+                width: 80%;
+                margin-left: 10%;
+                margin-top: -130px;
+            }
+        }
+
+        /* Default styles for larger screens */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            text-decoration: none;
+            width: 1500px;
+            height: 80px;
+            align-content: center;
+            background-color: rgb(233, 107, 18);
+            position: absolute;
+            margin-top: -850px;
+            padding: 5px;
+            font-size: 40px;
+            color: white;
+            font-weight: 20px;
+        }
+
+        img {
+            height: 850px;
+            width: 100%;
+        }
+
+        div {
+            background-color: white;
+            width: 1009px;
+            height: 100px;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 30px;
+            font-weight: 10px;
+            position: absolute;
+            margin-top: -170px;
+            margin-left: 332px;
+            background-color: blanchedalmond;
+            color: red;
+            border-radius: 10px;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3mtt-capstone</title>
+</head>
+<body>
+    <img src="bg img.jpg" alt="Background Image">
+    <section>
+        <h2 id="h2">Exite-Exprex Welcome Home
+            <ul style="text-decoration: none; color: white;" id="ul">
+                <li id="li"><a href="about.html" style="text-decoration: none; color: white;">About Us</a></li>
+                <li id="li"><a href="contactform.html" style="text-decoration: none; color: white;">Contact Us</a></li>
+                <li id="li"><a href="register.html" style="text-decoration: none; color: white;">Sign Up</a></li>
+                <li id="li"><a href="login.html" style="text-decoration: none; color: white;">Login</a></li>
+            </ul>
+        </h2>
+    </section>
+    <div>We are here to serve you</div>
+</body>
+</html>

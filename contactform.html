@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(235,
+ 230, 230);">
+ <p id="response"><h2></h2></p>
+    <div style="margin-left: 700px; 
+    align-content: center;">
+    <h1>Reach Out To Us</h1>
+    <p style="color: blue;
+     font-weight: 10px;
+      font-size: 20px;">
+      You can reach out to us <br>by filling the below for
+    </p>
+    <div  style="background-color: white; width: 210px;" 
+    >
+        <p><h2 style="color: red;">
+            Contact Us
+
+        </h2></p>
+        <form action=""   id="loginForm"> 
+            FullName:<br>
+            <input type="text" id="fullName" 
+            style="border-style: none
+            ; width: 205px;
+            height: 30px;
+            background-color: rgb(248, 243, 243)
+           "  ><br>
+            E-mail:<br>
+            <input type="text" id="email" style="width: 205px;
+            height: 30px;
+            border-style: none; 
+            background-color: rgb(248, 243, 243);" > 
+            Message:<br>
+            <input type="text" id="msg" style="width: 200px;
+            height: 100px;" >
+            
+        
+            <button id="btn" 
+            style="background-color: green;
+            color: white;
+            width: 206px;">submit</button>
+            
+        </form>
+
+    </div>
+</div>
+<script>
+        let submit = document.getElementById('btn');
+          submit.addEventListener("click", (e) => {
+        e.preventDefault();
+        let fullName = document.getElementById("fullName").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("msg").value;
+
+    if(fullName != "" && email !="" && message !=""  ) {
+        document.getElementById('response').innerHTML = message;
+        document.getElementById('response').innerHTML = fullName;
+        document.getElementById('response').innerHTML = email;
+
+        alert("information submitted ");
+        document.getElementById("loginForm").reset();
+
+   
+    } else {
+        alert("all fields are required");
+    
+    
+            
+    }
+    });
+
+
+</script>
+</body>
+</html>
